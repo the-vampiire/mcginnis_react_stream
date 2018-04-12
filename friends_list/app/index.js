@@ -4,12 +4,43 @@ require('./index.css');
 
 window.API = {
   fetchFriends: () => {
-    return new Promise((res, rej) => {
+    return new Promise((res) => {
       const friends = ['dutch', 'zelda', 'delayed list']
       setTimeout(() => {
         res(friends);
       }, 2000)
     });
+  }
+}
+
+class Loading extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      text: 'Loading'
+    }
+  }
+
+  componentDidMount() {
+    const stopper = `${this.state.text}...`;
+
+    this.interval = window.setInterval(() => {
+      this.setState((currentState) => {
+        console.log('calling')
+        return {
+          text: currentState.text === stopper ? 'Loading' : currentState.text + '.'
+        };
+      })
+    }, 420);
+  }
+
+  componentWillUnmount() {
+    console.log('unmounting Loading')
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return <h1>{this.state.text}</h1>
   }
 }
 
@@ -137,7 +168,7 @@ class App extends React.Component {
   }
 
   handleClearFriends() {
-    this.setState((currentState) => {
+    this.setState(() => {
       return {
         activeFriends: [],
         inactiveFriends: []
@@ -159,7 +190,7 @@ class App extends React.Component {
   }
 
   render() {
-    return this.state.loading ? <h1>LOADING</h1> :
+    return this.state.loading ? <Loading /> :
     (
       <div>
         <TextInput
