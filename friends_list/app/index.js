@@ -2,6 +2,17 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 require('./index.css');
 
+window.API = {
+  fetchFriends: () => {
+    return new Promise((res, rej) => {
+      const friends = ['dutch', 'zelda', 'delayed list']
+      setTimeout(() => {
+        res(friends);
+      }, 2000)
+    });
+  }
+}
+
 function FriendsList(props) {
   return (
     <div>
@@ -62,7 +73,8 @@ class App extends React.Component {
     this.state = {
         activeFriends: ['dutch', 'zelda'],
         inactiveFriends: [],
-        input: ''
+        input: '',
+        loading: true
     }
 
     // bind() returns the method (it is called on) attached to the referenced (argument) object
@@ -71,10 +83,30 @@ class App extends React.Component {
     this.handleRemoveFriend = this.handleRemoveFriend.bind(this);
     this.elementListSwap = this.elementListSwap.bind(this);
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
+    this.handleClearFriends = this.handleClearFriends.bind(this);
+  }
+
+  componentDidMount() {
+    API.fetchFriends().then(friendsList => {
+      this.setState(() => {
+        return {
+          activeFriends: friendsList,
+          loading: false
+        }
+      })
+    }).catch(console.error);
+  }
+
+  componentDidUpdate() {
+    console.log('updated')
+  }
+
+  componentWillUnmount() {
+    console.log('unmounting...')
   }
 
   handleUpdateInput({target: { value }}) {
-    this.setState((currentState) => currentState.input = value);
+    this.setState((currentState) => ({ input: value }));
   }
 
   handleAddFriend() {
@@ -104,6 +136,15 @@ class App extends React.Component {
     });
   }
 
+  handleClearFriends() {
+    this.setState((currentState) => {
+      return {
+        activeFriends: [],
+        inactiveFriends: []
+      }
+    });
+  }
+
   elementListSwap(target, fromListName, toListName) {
     // filters the target element out of the fromList
     // adds it to the toList
@@ -118,7 +159,8 @@ class App extends React.Component {
   }
 
   render() {
-    return (
+    return this.state.loading ? <h1>LOADING</h1> :
+    (
       <div>
         <TextInput
           input={this.state.input}
@@ -126,6 +168,10 @@ class App extends React.Component {
           handleUpdateInput={this.handleUpdateInput}
           handleInputSubmit={this.handleAddFriend}
         />
+
+        <button onClick={this.handleClearFriends}>
+          Clear All Friends
+        </button>
 
         <FriendsList
           title='Active Friends'
