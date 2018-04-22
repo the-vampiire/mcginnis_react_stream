@@ -20,6 +20,12 @@ module.exports = {
                     // the transpiling tool used for this filetype
                     loader: 'babel-loader'
                 }
+            },
+            {
+                // filetype to be transpiled
+                test: /\.css$/,
+        // **** STYLE LOADER MUST COME FIRST ****
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
