@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import style from './style.css';
 
 class LanguageInput extends Component {
     constructor(props) {

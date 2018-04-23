@@ -1,22 +1,3 @@
-#add_language {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-}
-
-#add_language input {
-    display: block;
-    grid-area: 1 / 2 / 2 / 3;
-    font-size: 2em;
-}
-
-#add_language button {
-    display: block;
-    grid-area: 2 / 2 / 3 / 3;
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
 #language_select {
     display: grid;
     grid-gap: 20px;
