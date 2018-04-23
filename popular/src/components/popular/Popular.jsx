@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import LanguageSelect from './stateless/LanguageSelect';
+import LanguageSelect from '../stateless/LanguageSelect';
 import AddLanguage from '../add_language/AddLanguage';
-import RepoGrid from '../popular/stateless/RepoGrid';
+import RepoGrid from '../stateless/RepoGrid';
 import API from '../../utilities/github_api';
 import Loading from '../loading/Loading';
 import style from './style.css';
@@ -33,7 +33,8 @@ class PopularRepos extends Component {
         loading: false,
         activeLanguage: language,
         repos,
-      }))).catch(console.error);
+      })))
+      .catch(console.error);
   }
 
   handleRemoveLanguage(language) {

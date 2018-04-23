@@ -24,7 +24,7 @@ class LanguageInput extends Component {
         <button
           onClick={() => (this.state.valid ? this.props.onAddLanguage(this.state.value) : null)}
         >
-                    Add Language
+          Add Language
         </button>
       </div>
     );
