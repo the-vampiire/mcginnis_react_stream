@@ -1,6 +1,10 @@
 import React from 'react';
-import Router from '../stateless/Router';
+import PopularRepos from '../popular/Popular';
 
-const App = () => (<Router />);
+const App = () => (
+  <div>
+    <PopularRepos />
+  </div>
+);
 
 export default App;
