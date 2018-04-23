@@ -1,0 +1,51 @@
+#language_select {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style-position: inside;    
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    /* border: 1px black double; */
+}
+
+.language_select_item {
+    font-size: 20px;
+    border: 1px black double;
+    cursor: pointer;
+    padding: 10px 10px;
+    box-shadow: 2px 2px rgba(0,0,0, 0.8);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr;
+}
+
+.language_select_item button {
+    height: 20px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.language_select_item:active button {
+    background-color: rgba(255,255,255,1);
+}
+
+.language_select_item:active {
+    background-color:#15df89;
+}
+
+#repo_grid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.repo_item {
+    text-align: center;
+    border: 2px black ridge;
+    padding: 20px 20px;
+    box-shadow: 3px 3px rgba(0,0,0,0.8);
+}
+
+.repo_item img {
+    height: 150px;
+}
