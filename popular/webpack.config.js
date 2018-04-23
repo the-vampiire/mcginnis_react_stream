@@ -35,6 +35,12 @@ module.exports = {
     ],
   },
 
+  devServer: {
+    // this allows router redirects to url based routes
+    // url route -> / (activate Router) -> /route (Router redirects)
+    historyApiFallback: true,
+  },
+
   plugins: [
     new HTMLWebpackPlugin({
       template: './src/index.html',
