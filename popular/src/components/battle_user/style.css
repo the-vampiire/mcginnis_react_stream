@@ -1,7 +1,7 @@
 .battle_user_container {
   box-shadow: -3px 3px 6px rgba(0,0,0,0.5);
   background-color: rgb(0, 0,205, 0.5);
-  margin: 50px 50px;
+  margin: 20px 50px;
   border-radius: 5px;
   border: 2px white double;
   color: white;
@@ -28,10 +28,9 @@
   font-size: 1.25em;
   display: grid;
   text-align: center;
-  margin: 20px auto;
   border: 2px white double;
   padding: 10px 10px;
-  margin: 10px 10px;
+  margin: 0px 10px;
 }
 
 .battle_user_text_input input {
@@ -43,4 +42,12 @@
   font-size: 1.5em;
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
+}
+
+.battle_user_container.winner {
+  background-color: rgb(0, 200, 0, 0.6);
+}
+
+.battle_user_container.loser {
+  background-color: rgb(250, 0, 0, 0.6);
 }

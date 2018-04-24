@@ -11,22 +11,24 @@ const GitHubUser = ({ username, userData }) => (
 
     <div className="battle_user_detail">
       <table>
-        <tr>
-          <td>Join Date</td>
-          <td>{new Date(userData.created_at).toDateString()}</td>
-        </tr>
-        <tr>
-          <td>Followers</td>
-          <td>{userData.followers}</td>
-        </tr>
-        <tr>
-          <td>Repos</td>
-          <td>{userData.public_repos}</td>
-        </tr>
-        <tr>
-          <td>Gists</td>
-          <td>{userData.public_gists}</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>Join Date</td>
+            <td>{new Date(userData.created_at).toDateString()}</td>
+          </tr>
+          <tr>
+            <td>Followers</td>
+            <td>{userData.followers}</td>
+          </tr>
+          <tr>
+            <td>Repos</td>
+            <td>{userData.public_repos}</td>
+          </tr>
+          <tr>
+            <td>Gists</td>
+            <td>{userData.public_gists}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>

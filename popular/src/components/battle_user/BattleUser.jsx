@@ -38,19 +38,22 @@ class BattleUser extends Component {
 
   render() {
     const { username, userData } = this.state;
+
     return (
-      <div className="battle_user_container">
+      // <div className={`battle_user_container ${winner ? 'winner' : 'loser'}`}>
+      <div className={`battle_user_container ${this.props.battleResultClass}`}>
         {
           username && userData
           ?
             <GitHubUser username={username} userData={userData} />
           :
-            <TextInput
-              submitText="Add User"
-              className="battle_user_text_input"
-              submitAction={this.handleSubmit}
-            />
+            null
         }
+        <TextInput
+          submitText="Add User"
+          className="battle_user_text_input"
+          submitAction={this.handleSubmit}
+        />
       </div>
     );
   }
@@ -58,7 +61,12 @@ class BattleUser extends Component {
 
 BattleUser.propTypes = {
   battleUserId: PropTypes.string.isRequired,
+  battleResultClass: PropTypes.string,
   onValidData: PropTypes.func.isRequired,
+};
+
+BattleUser.defaultProps = {
+  battleResultClass: '',
 };
 
 export default BattleUser;
