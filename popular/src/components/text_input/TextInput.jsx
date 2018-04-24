@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import style from './style.css';
 
-class LanguageInput extends Component {
+class TextInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,21 +18,29 @@ class LanguageInput extends Component {
   }
 
   render() {
+    const { divId, submitText, submitAction } = this.props;
     return (
-      <div id="add_language">
+      <div id={divId}>
         <input type="text" onChange={this.updateValue} />
         <button
-          onClick={() => (this.state.valid ? this.props.onAddLanguage(this.state.value) : null)}
+          onClick={() => (this.state.valid ? submitAction(this.state.value) : null)}
         >
-          Add Language
+          {submitText}
         </button>
       </div>
     );
   }
 }
 
-LanguageInput.propTypes = {
-  onAddLanguage: PropTypes.func.isRequired,
+TextInput.propTypes = {
+  divId: PropTypes.string,
+  submitText: PropTypes.string,
+  submitAction: PropTypes.func.isRequired,
 };
 
-export default LanguageInput;
+TextInput.defaultProps = {
+  divId: null,
+  submitText: 'Submit',
+};
+
+export default TextInput;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LanguageSelect from '../stateless/LanguageSelect';
-import AddLanguage from '../add_language/AddLanguage';
+import TextInput from '../text_input/TextInput';
 import RepoGrid from '../stateless/RepoGrid';
 import API from '../../utilities/github_api';
 import Loading from '../loading/Loading';
@@ -48,14 +48,13 @@ class PopularRepos extends Component {
 
   handleAddLanguage(language) {
     this.setState(state => ({ languages: state.languages.concat(language) }));
-
     this.setActiveLanguage(language);
   }
 
   render() {
-    return (this.state.loading
-      ? <Loading rate={120} />
-      :
+    return (
+      this.state.loading ? <Loading rate={120} /> :
+
       <div id="popular_container">
         <LanguageSelect
           languages={this.state.languages}
@@ -64,7 +63,11 @@ class PopularRepos extends Component {
           onRemoveLanguage={this.handleRemoveLanguage}
         />
 
-        <AddLanguage onAddLanguage={this.handleAddLanguage} />
+        <TextInput
+          submitText="Add Language"
+          submitAction={this.handleAddLanguage}
+          divId="add_language"
+        />
 
         <RepoGrid repos={this.state.repos} />
       </div>
