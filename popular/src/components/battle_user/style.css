@@ -1,0 +1,53 @@
+.battle_user_container {
+  box-shadow: -3px 3px 6px rgba(0,0,0,0.5);
+  background-color: rgb(0, 0,205, 0.5);
+  margin: 20px 50px;
+  border-radius: 5px;
+  border: 2px white double;
+  color: white;
+}
+
+.battle_user img {
+  width: 200px;
+  margin-top: -50px;
+  box-shadow: -2px -2px 5px rgba(0,0,0,0.5);
+  border-radius: 50%;
+}
+
+.battle_user_text_input {
+  margin: 10px 10px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 5px;
+}
+
+.battle_user_detail {
+  color: white;
+  font-size: 1.25em;
+  display: grid;
+  text-align: center;
+  border: 2px white double;
+  padding: 10px 10px;
+  margin: 0px 10px;
+}
+
+.battle_user_text_input input {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.battle_user_text_input button {
+  font-size: 1.5em;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.battle_user_container.winner {
+  background-color: rgb(0, 200, 0, 0.6);
+}
+
+.battle_user_container.loser {
+  background-color: rgb(250, 0, 0, 0.6);
+}
