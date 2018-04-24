@@ -1,5 +1,5 @@
 import React from 'react';
-import Router from '../stateless/Router';
+import Router from './stateless/Router';
 
 const App = () => (<Router />);
 
