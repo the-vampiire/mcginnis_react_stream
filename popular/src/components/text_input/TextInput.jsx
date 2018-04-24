@@ -18,9 +18,15 @@ class TextInput extends Component {
   }
 
   render() {
-    const { divId, submitText, submitAction } = this.props;
+    const {
+      divId,
+      className,
+      submitText,
+      submitAction,
+    } = this.props;
+
     return (
-      <div id={divId}>
+      <div id={divId} className={className}>
         <input type="text" onChange={this.updateValue} />
         <button
           onClick={() => (this.state.valid ? submitAction(this.state.value) : null)}
@@ -34,12 +40,14 @@ class TextInput extends Component {
 
 TextInput.propTypes = {
   divId: PropTypes.string,
+  className: PropTypes.string,
   submitText: PropTypes.string,
   submitAction: PropTypes.func.isRequired,
 };
 
 TextInput.defaultProps = {
   divId: null,
+  className: null,
   submitText: 'Submit',
 };
 
