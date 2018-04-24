@@ -6,11 +6,10 @@
     list-style-type: none;
     padding: 0;
     text-align: center;
-    /* border: 1px black double; */
 }
 
 .language_select_item {
-    font-size: 20px;
+    font-size: 12px;
     border: 1px black double;
     cursor: pointer;
     padding: 10px 10px;
@@ -20,9 +19,14 @@
     grid-template-rows: 2fr;
 }
 
+.language_select_item:hover {
+    color: white;
+    background-color: #15df89;
+}
+
 .language_select_item button {
     height: 20px;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.4);
 }
 
 .language_select_item:active button {
