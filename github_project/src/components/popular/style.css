@@ -25,6 +25,10 @@
   word-wrap: break-word;
 }
 
+.repo_item:hover {
+  box-shadow: 2px 2px 3px rgba(3, 238, 255, 0.9);
+}
+
 .repo_item img {
   width: 200px;
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PT from 'prop-types';
+import PropTypes from 'prop-types';
 import RepoItem from './RepoItem';
 
 const RepoGrid = props => (
@@ -11,7 +11,7 @@ const RepoGrid = props => (
 );
 
 RepoGrid.propTypes = {
-  repos: PT.instanceOf(Array).isRequired,
+  repos: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default RepoGrid;
