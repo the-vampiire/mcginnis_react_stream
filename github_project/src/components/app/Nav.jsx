@@ -2,11 +2,16 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Nav = () => (
-  <div>
+  <div className="nav">
     <ul>
       <li>
-        <NavLink to="/">
+        <NavLink exact to="/" activeClassName="active">
           Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/popular" activeClassName="active">
+          Popular Repos
         </NavLink>
       </li>
     </ul>
