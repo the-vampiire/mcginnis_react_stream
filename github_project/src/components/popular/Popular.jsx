@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import * as PT from 'prop-types';
 import RepoGrid from './RepoGrid';
 import api from '../../tools/githubApi';
 import style from './style.css';
 
-class Popular extends Component {
+class Popular extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,6 +13,12 @@ class Popular extends Component {
       repos: null,
       loading: true,
     };
+
+    const languageUrlParam = this.props.match.params.language;
+    if (languageUrlParam) {
+      this.state.languages.push(languageUrlParam);
+      this.state.activeLanguage = languageUrlParam;
+    }
 
     this.setLanguage = this.setLanguage.bind(this);
   }
@@ -73,5 +80,9 @@ class Popular extends Component {
     );
   }
 }
+
+Popular.propTypes = { match: PT.instanceOf(Object) };
+
+Popular.defaultProps = { match: null };
 
 export default Popular;
