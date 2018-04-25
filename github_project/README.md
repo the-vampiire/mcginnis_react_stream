@@ -1,0 +1,1 @@
+# Clone of the Tyler McGinnis React Fundamentals course project.
