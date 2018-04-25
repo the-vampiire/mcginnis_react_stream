@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PT from 'prop-types';
+import PropTypes from 'prop-types';
 
 const RepoItem = (props) => {
   const {
@@ -32,7 +32,7 @@ const RepoItem = (props) => {
 };
 
 RepoItem.propTypes = {
-  repo: PT.instanceOf(Object).isRequired,
+  repo: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default RepoItem;

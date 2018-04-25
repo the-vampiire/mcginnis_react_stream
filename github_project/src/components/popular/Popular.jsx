@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as PT from 'prop-types';
+import * as PropTypes from 'prop-types';
 import RepoGrid from './RepoGrid';
 import api from '../../tools/githubApi';
 import style from './style.css';
@@ -11,6 +11,7 @@ class Popular extends React.Component {
       languages: ['all', 'python', 'javascript'],
       activeLanguage: 'all',
       repos: null,
+      fetchError: null,
       loading: true,
     };
 
@@ -20,35 +21,38 @@ class Popular extends React.Component {
       this.state.activeLanguage = languageUrlParam;
     }
 
-    this.setLanguage = this.setLanguage.bind(this);
+    this.updateLanguage = this.updateLanguage.bind(this);
   }
 
   componentDidMount() {
-    this.setLanguage(this.state.activeLanguage);
+    this.updateLanguage(this.state.activeLanguage);
   }
 
-  setRepos(language) {
+  updateLanguage(language) {
+    // prevents state update for same language selection (multiple clicks by user)
+    this.setState(currentState => (
+      currentState.activeLanguage === language
+        ? null
+        : { activeLanguage: language, loading: true }
+        // only makes the API call and grid state update if necessary
+    ), () => this.state.loading && this.updateRepos(language));
+  }
+
+  updateRepos(language) {
     api.topRepos(language)
       .then((repos) => {
         this.setState(() => ({
           repos,
           loading: false,
+          fetchError: null,
         }));
       })
-      .catch(console.error);
-  }
-
-  setLanguage(language) {
-    this.setState(currentState => (
-      currentState.activeLanguage === language
-        ? null
-        : { activeLanguage: language, loading: true }
-    ));
-
-    this.setRepos(language);
+      .catch(() => this.setState(() => ({ fetchError: true })));
   }
 
   render() {
+    if (this.state.fetchError) return (<h1>An error occurred in loading</h1>);
+
     const {
       languages,
       activeLanguage,
@@ -64,7 +68,7 @@ class Popular extends React.Component {
               languages.map(language => (
                 <li
                   key={language}
-                  onClick={() => this.setLanguage(language)}
+                  onClick={() => this.updateLanguage(language)}
                   className={language === activeLanguage ? 'active' : null}
                 >
                   {language}
@@ -81,7 +85,7 @@ class Popular extends React.Component {
   }
 }
 
-Popular.propTypes = { match: PT.instanceOf(Object) };
+Popular.propTypes = { match: PropTypes.instanceOf(Object) };
 
 Popular.defaultProps = { match: null };
 
