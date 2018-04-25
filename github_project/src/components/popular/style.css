@@ -1,0 +1,34 @@
+.language_select {
+  display: flex;
+  justify-content: center;
+  font-size: 2em !important;
+}
+
+.language_select li:hover {
+  cursor: pointer;
+}
+
+.repo_grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  text-align: center;
+}
+
+.repo_item {
+  box-shadow: 4px 4px 5px rgba(0,0,0,0.5);
+  width: 300px;
+}
+
+.repo_item h1, h2, h3 {
+  word-wrap: break-word;
+}
+
+.repo_item img {
+  width: 200px;
+}
+
+.repo_item p {
+  text-align: left;
+}
