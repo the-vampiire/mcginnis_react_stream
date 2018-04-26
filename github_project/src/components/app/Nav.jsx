@@ -6,7 +6,7 @@ const Nav = () => (
     <ul>
       <li>
         <NavLink exact to="/" activeClassName="active">
-          Home
+          About
         </NavLink>
       </li>
       <li>

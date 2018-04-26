@@ -22,3 +22,11 @@
 .active {
   color: rgba(200, 0, 0) !important;
 }
+
+article h1, h2 {
+  text-align: center;
+}
+
+section h2 {
+  text-align: left;
+}
