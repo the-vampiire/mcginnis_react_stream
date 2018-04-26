@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import * as PropTypes from 'prop-types';
 import RepoGrid from './RepoGrid';
-import api from '../../tools/githubApi';
+import api from '../../tools/api';
 import style from './style.css';
 
 class Popular extends React.Component {

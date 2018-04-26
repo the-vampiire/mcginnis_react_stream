@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Nav = () => (
@@ -12,6 +12,11 @@ const Nav = () => (
       <li>
         <NavLink to="/popular" activeClassName="active">
           Popular Repos
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/battle" activeClassName="active">
+          Battle
         </NavLink>
       </li>
     </ul>
