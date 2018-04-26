@@ -35,7 +35,7 @@ class PlayerInput extends Component {
           <input
             id="username"
             type="text"
-            placeHolder="GitHub username"
+            placeholder="GitHub username"
             value={username}
             onChange={this.handleInput}
           />

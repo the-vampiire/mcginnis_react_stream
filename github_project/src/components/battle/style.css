@@ -29,11 +29,16 @@ a {
   margin: 10px auto;
 }
 
+.button.battle {
+  background: rgb(200, 0, 0) !important;
+  margin-top: 50%;
+}
+
 .button.small {
   color: #e6e6e6;
   background: #0a0a0a;
   border: none;
-  font-size: 10px;
+  font-size: 15px;
   border-radius: 3px;
   width: 200px;
   text-align: center;
@@ -62,8 +67,17 @@ a {
   text-align: center;
 }
 
-.column label {
+.column label, span {
   text-align: center;
+  font-size: 30px;
+  font-weight: 200;
+}
+
+.column img {
+  border-radius: 50%;
+}
+
+.column p {
   font-size: 30px;
   font-weight: 200;
 }

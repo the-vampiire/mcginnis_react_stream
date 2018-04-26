@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Nav from './Nav';
 import Popular from '../popular/Popular';
 import Battle from '../battle/Battle';

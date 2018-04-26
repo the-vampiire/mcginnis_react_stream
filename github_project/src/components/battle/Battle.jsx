@@ -1,20 +1,42 @@
+import 'babel-polyfill'; // for async / await
 import React, { Component } from 'react';
 import style from './style.css';
 import PlayerInput from './PlayerInput';
-import PlayerPreview from './PlayerPreview';
+import Player from './Player';
+import api from '../../tools/api';
 
 class Battle extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      results: null,
       playerOneName: null,
       playerTwoName: null,
       playerOneImage: null,
       playerTwoImage: null,
+      playerOneData: null,
+      playerTwoData: null,
     };
 
+    this.resetPlayer = this.resetPlayer.bind(this);
+    this.getResults = this.getResults.bind(this);
     this.addPlayer = this.addPlayer.bind(this);
-    this.handleReset = this.handleReset.bind(this);
+    this.getPlayersData = this.getPlayersData.bind(this);
+    this.comparePlayers = this.comparePlayers.bind(this);
+  }
+
+  getResults() {
+    this.getPlayersData()
+      .then(() => this.comparePlayers())
+      .then(results => this.setState(() => ({ results })));
+  }
+
+  async getPlayersData() {
+    const { playerOneName, playerTwoName } = this.state;
+    const playerOneData = await api.userData(playerOneName);
+    const playerTwoData = await api.userData(playerTwoName);
+
+    this.setState(() => ({ playerOneData, playerTwoData }));
   }
 
   addPlayer(id, username) {
@@ -26,21 +48,34 @@ class Battle extends Component {
     });
   }
 
-  handleReset(id) {
+  resetPlayer(id) {
     this.setState(() => {
-      const newState = {};
+      const newState = { results: null };
       newState[`${id}Name`] = null;
       newState[`${id}Image`] = null;
       return newState;
     });
   }
 
+  comparePlayers() {
+    const { playerOneData, playerTwoData } = this.state;
+
+    if (!playerOneData || !playerTwoData) return null;
+
+    return playerOneData.followers > playerTwoData.followers
+      ? { playerOne: 'Winner', playerTwo: 'Loser' }
+      : { playerOne: 'Loser', playerTwo: 'Winner' };
+  }
+
   render() {
     const {
+      results,
       playerOneName,
       playerTwoName,
       playerOneImage,
       playerTwoImage,
+      playerOneData,
+      playerTwoData,
     } = this.state;
 
     return (
@@ -55,12 +90,28 @@ class Battle extends Component {
                   onSubmit={this.addPlayer}
                 />
               :
-                <PlayerPreview
+                <Player
                   username={playerOneName}
                   image={playerOneImage}
+                  result={results ? results.playerOne : null}
+                  data={playerOneData}
                   id="playerOne"
-                  onReset={this.handleReset}
+                  onReset={this.resetPlayer}
                 />
+          }
+          {
+            !results && playerOneName && playerTwoName
+              ?
+                <div>
+                  <button
+                    className="button battle"
+                    onClick={() => this.getResults(playerOneName, playerTwoName)}
+                  >
+                    BATTLE!
+                  </button>
+                </div>
+              :
+                null
           }
           {
             !playerTwoName
@@ -71,11 +122,13 @@ class Battle extends Component {
                   onSubmit={this.addPlayer}
                 />
               :
-                <PlayerPreview
+                <Player
                   username={playerTwoName}
                   image={playerTwoImage}
+                  result={results ? results.playerTwo : null}
+                  data={playerTwoData}
                   id="playerTwo"
-                  onReset={this.handleReset}
+                  onReset={this.resetPlayer}
                 />
           }
         </div>
