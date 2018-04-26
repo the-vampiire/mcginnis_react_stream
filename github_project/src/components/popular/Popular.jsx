@@ -1,5 +1,6 @@
 import React from 'react';
-import * as PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import Loading from 'react-loading';
 import RepoGrid from './RepoGrid';
 import api from '../../tools/api';
 import style from './style.css';
@@ -78,7 +79,9 @@ class Popular extends React.Component {
           </ul>
         </div>
         {
-          loading ? 'LOADING...' : <RepoGrid repos={repos} />
+          loading
+            ? <Loading type="bars" color="rgb(200,0,0)" height="200px" width="500px" />
+            : <RepoGrid repos={repos} />
         }
       </div>
     );
