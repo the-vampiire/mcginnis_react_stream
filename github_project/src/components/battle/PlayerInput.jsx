@@ -37,6 +37,7 @@ class PlayerInput extends Component {
             type="text"
             placeholder="GitHub username"
             value={username}
+            autoComplete="off"
             onChange={this.handleInput}
           />
         </label>

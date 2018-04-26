@@ -10,7 +10,7 @@ const Router = () => (
       <Nav />
       <Route exact path="/" render={() => (<h1>Home</h1>)} />
       <Route path="/popular/:language?" component={Popular} />
-      <Route path="/battle/:username?/:username?" component={Battle} />
+      <Route path="/battle/:playerOneName?/:playerTwoName?" component={Battle} />
     </div>
   </BrowserRouter>
 );

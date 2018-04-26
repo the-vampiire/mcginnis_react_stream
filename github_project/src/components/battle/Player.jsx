@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Player = props => (
-  <div className="column">
+  <div className="column player">
     { props.result ? <span>{props.result}</span> : null }
 
     <img src={props.image} alt={`Avatar for ${props.username}`} />
@@ -19,7 +19,7 @@ const Player = props => (
       onClick={() => props.onReset.call(null, props.id)}
       className="button small"
     >
-      Reset
+      CLEAR
     </button>
   </div>
 );
