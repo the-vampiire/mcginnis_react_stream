@@ -14,6 +14,11 @@ const Nav = () => (
           Popular Repos
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/battle" activeClassName="active">
+          Battle
+        </NavLink>
+      </li>
     </ul>
   </div>
 );
