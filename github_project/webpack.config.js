@@ -37,20 +37,20 @@ module.exports = {
       {
         test: /\.js(x)?$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.css/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
 
   devServer: { historyApiFallback: true },
-  
+
   plugins: [
     new HTMLWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
     }),
-  ]
+  ],
 };
