@@ -1,0 +1,13 @@
+body {
+  background-color: #15df89;
+}
+
+.nav {
+  font-size: 2em;
+  text-align: center;
+}
+
+.nav ul {
+  list-style: none;
+  display: inline;
+}

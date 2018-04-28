@@ -1,7 +1,7 @@
 import React from 'react';
+import Router from './Router';
+import style from './style.css';
 
-const App = () => (
-  <h1>Hello World</h1>
-);
+const App = () => (<Router />);
 
 export default App;
